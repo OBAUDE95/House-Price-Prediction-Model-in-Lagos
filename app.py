@@ -1,13 +1,22 @@
 import dash
+import dash_auth
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import pandas as pd
 import pickle
+import requests
 
-# Load the model and column names from the pickle file
-with open('best_model.pkl', 'rb') as f:
-    loaded_model, loaded_columns = pickle.load(f)
+# Define the URL to your model on GitHub
+model_url = "https://github.com/OBAUDE95/HousePricePrediction/raw/e6b85854afdc4e65a90e941706d90b2a1b74764a/best_model.pkl"
+
+# Download the model file
+response = requests.get(model_url)
+
+if response.status_code == 200:
+    loaded_model, loaded_columns = pickle.loads(response.content)
+else:
+    raise Exception("Failed to download the model file.")
 
 # Define the house title mapping
 title_mapping = {
@@ -21,12 +30,19 @@ title_mapping = {
 }
 
 # Initialize the Dash app with dark theme
-app = dash.Dash( external_stylesheets=[dbc.themes.DARKLY])
-
+app = dash.Dash(external_stylesheets=[dbc.themes.DARKLY])
 server = app.server
-# #setting password
-# x = [['deji','ignore']]
-# i = dash_auth.BasicAuth(app,x)
+
+# Define authentication credentials
+VALID_USERNAME_PASSWORD_PAIRS = {
+    'deji': 'ayo'
+}
+
+# Set up basic authentication
+auth = dash_auth.BasicAuth(
+    app,
+    VALID_USERNAME_PASSWORD_PAIRS
+)
 
 # Define the layout of the app using Bootstrap components
 app.layout = dbc.Container([
@@ -105,7 +121,7 @@ def update_output(n_clicks, bedrooms, bathrooms, toilets, parking_space, title):
         # Use the loaded model to make predictions
         prediction = loaded_model.predict(new_data)
 
-        return html.H4(f'Prediction: #{prediction[0]}', className='text-primary mt-4')
+        return html.H4(f'Prediction: #{prediction[0]:,.2f}', className='text-primary mt-4')
 
     return ''  # Return an empty string if button not clicked
 
