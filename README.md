@@ -1,2 +1,1 @@
-# HousePricePrediction
-This project involve houseprice prediction in Ajah
+This repository hosts a machine learning project focused on predicting house purchase prices in Nigeria. Leveraging a random forest regressor algorithm, the project aims to provide accurate insights into house pricing based on various factors such as location, size, and house type. Through comprehensive data analysis and model evaluation, the project aims to enhance transparency and efficiency in the housing market, benefiting homebuyers, real estate professionals, policymakers, and market analysts.
