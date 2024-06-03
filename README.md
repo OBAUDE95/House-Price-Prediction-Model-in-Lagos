@@ -1,10 +1,6 @@
-Certainly!
-
----
-
 **Project Overview:**
 
-Welcome to the machine learning project repository for predicting house purchase prices in Nigeria. Our project utilizes a random forest regressor algorithm to provide accurate insights into house pricing, incorporating factors such as location, size, and house type. By leveraging comprehensive data analysis and model evaluation, our aim is to enhance transparency and efficiency in the housing market.
+Welcome to the machine learning project repository for predicting house purchase prices in Ajah, Nigeria, led by Obaude Ayodeji. Our project utilizes a random forest regressor algorithm to provide accurate insights into house pricing, incorporating factors such as location, size, and house type. By leveraging comprehensive data analysis and model evaluation, our aim is to enhance transparency and efficiency in the housing market.
 
 **Explore the App:**
 
@@ -24,4 +20,3 @@ We welcome community contributions and feedback to improve the model's accuracy 
 
 MIT License for open collaboration.
 
----
