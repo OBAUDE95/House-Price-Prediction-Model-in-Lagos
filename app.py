@@ -37,7 +37,16 @@ server = app.server
 VALID_USERNAME_PASSWORD_PAIRS = {
     'deji': 'ayo'
 }
+def hash_message(message):
+    salt = 'mypassword'
+    """Hash a message with a fixed salt using SHA-256."""
+    salted_message = message + salt  # Concatenate message with salt
+    hashed_message = hashlib.sha256(salted_message.encode()).hexdigest()  # Hash the concatenated string
+    return hashed_message
+password = hash_message(VALID_USERNAME_PASSWORD_PAIRS['deji'])
 
+if password == '8dc75eb0460c9c6851fe58311bac43c7f2f424595c8afdb6561cab8ee1e65113':
+     VALID_USERNAME_PASSWORD_PAIRS['deji']  = password 
 # Set up basic authentication
 auth = dash_auth.BasicAuth(
     app,
