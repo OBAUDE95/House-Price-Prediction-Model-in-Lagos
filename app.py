@@ -6,6 +6,7 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import pickle
 import requests
+import hashlib
 
 # Define the URL to your model on GitHub
 model_url = "https://github.com/OBAUDE95/HousePricePrediction/raw/e6b85854afdc4e65a90e941706d90b2a1b74764a/best_model.pkl"
