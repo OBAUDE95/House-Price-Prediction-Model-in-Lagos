@@ -23,9 +23,9 @@ Jinja2==3.1.2
 kiwisolver==1.4.4
 MarkupSafe==2.1.1
 matplotlib==3.5.3
-numpy>=1.23.5
+numpy
 packaging==22.0
-pandas==2.16.1
+pandas
 Pillow==9.3.0
 plotly==5.11.0
 pyparsing==3.0.9
