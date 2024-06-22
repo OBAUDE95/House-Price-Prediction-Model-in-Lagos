@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import pickle
 import requests
-import hashlib
+# import hashlib
 from dash_auth import BasicAuth
 # Define the URL to your model on GitHub
 model_url = "https://github.com/OBAUDE95/HousePricePrediction/raw/e6b85854afdc4e65a90e941706d90b2a1b74764a/best_model.pkl"
@@ -38,24 +38,24 @@ server = app.server
 # Custom authorization function
 
 
-def authorization_function(username, password):
-    salt = 'mypassword'  # Use a more secure salt in a real application
-    salted_message = password + salt  # Concatenate password with salt
-    # Hash the concatenated string
-    hashed_password = hashlib.sha256(salted_message.encode()).hexdigest()
+# def authorization_function(username, password):
+#     salt = 'mypassword'  # Use a more secure salt in a real application
+#     salted_message = password + salt  # Concatenate password with salt
+#     # Hash the concatenated string
+#     hashed_password = hashlib.sha256(salted_message.encode()).hexdigest()
 
-    # This is the stored hashed password for demonstration (hash of "world" + salt "mypassword")
-    stored_hashed_password = "8dc75eb0460c9c6851fe58311bac43c7f2f424595c8afdb6561cab8ee1e65113"
+#     # This is the stored hashed password for demonstration (hash of "world" + salt "mypassword")
+#     stored_hashed_password = "8dc75eb0460c9c6851fe58311bac43c7f2f424595c8afdb6561cab8ee1e65113"
 
-    # Check if the hashed password matches the stored hashed password
-    if str(hashed_password) == stored_hashed_password:
-        return True
-    else:
-        return False
+#     # Check if the hashed password matches the stored hashed password
+#     if str(hashed_password) == stored_hashed_password:
+#         return True
+#     else:
+#         return False
 
 
-# Set up BasicAuth with the custom authorization function
-auth = BasicAuth(app, auth_func=authorization_function, secret_key="Developer")
+# # Set up BasicAuth with the custom authorization function
+# auth = BasicAuth(app, auth_func=authorization_function, secret_key="Developer")
 
 
 # Define the layout of the app using Bootstrap components
